@@ -1,0 +1,41 @@
+#: import hex kivy.utils.get_color_from_hex
+<Entalpia>
+    canvas.before:
+        Color:
+            rgba: hex('#00A1FC')
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    orientation: 'vertical'
+    BoxLayout:
+        size_hint_y: .1
+        orientation: 'horizontal'
+        Label:
+            text:'Box1'
+            size_hint_x: .3
+        Label:
+            text:'Fecha'
+            size_hint_x: .4
+        Button:
+            text: 'Admin'
+            size_hint_x: .15
+        Button:
+            text: 'LogOut'
+            size_hint_x: .15
+
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: hex('#00DEC')
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        size_hint_y: .85
+        orientation: 'vertical'
+        Label:
+            text:'Box2'
+    BoxLayout:
+        size_hint_y: .05
+        orientation: 'vertical'
+        Label:
+            text:'Box3'
