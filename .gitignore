@@ -1,0 +1,8 @@
+kivy_venv
++source kivy_venv/bin/activate
+.vscode
+/Application/build
+Application/dist
+.idea
+Application/__pycache__
+Application/src/__pycache__

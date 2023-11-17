@@ -3,7 +3,7 @@ from kivy_deps import sdl2, glew
 
 
 a = Analysis(
-    ['entalpia.py'],
+    ['main.py'],
     pathex=[],
     binaries=[],
     datas=[],
@@ -14,8 +14,8 @@ a = Analysis(
     excludes=[],
     noarchive=False,
 )
-a.datas += [('Code\entalpia.kv','E:\\Works\\tesis\\termo\\app\\entalpia\entalpia.kv','DATA')]
-a.datas += [('database\database.sqlite3', 'E:\\Works\\tesis\\termo\\app\\entalpia\\database', 'DATA')]
+a.datas += [('Code\main.kv','E:\\Works\\tesis\\termo\\Application\main.kv','DATA')]
+a.datas += [('database\database.sqlite3', 'E:\\Works\\tesis\\termo\\Application\\database', 'DATA')]
 
 pyz = PYZ(a.pure)
 
@@ -40,7 +40,7 @@ exe = EXE(
 
 coll = COLLECT(
     exe,
-    Tree('E:\\Works\\tesis\\termo\\app\\entalpia\\'),
+    Tree('E:\\Works\\tesis\\termo\\Application\\'),
     a.binaries,
     a.datas,
     *[Tree(p) for p in (sdl2.dep_bins + glew.dep_bins)],

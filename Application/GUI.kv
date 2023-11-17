@@ -1,6 +1,5 @@
 #: import hex kivy.utils.get_color_from_hex
-<Entalpia>:
-
+<GUI>:
     canvas.before:
         Color:
             #rgba: hex('#2600E5')
@@ -32,7 +31,9 @@
             size_hint_x: .15
             id: spinner_id
             text: "Datos"
-            values: ["CQE","Generador de Vapor","Porcentaje de Carga"]
+            values: ["CQE","Generador de Vapor","Porcentaje de Carga","Gases"]
+            tooltip_text: "Selecciona una opción"
+
             on_text: root.menuSeleccionado(spinner_id.text)
     BoxLayout:
         canvas.before:
@@ -55,6 +56,8 @@
                     source: 'img/utelvte.png'
                 Label:
                     text: ' '
+                    tooltip_text:"Selecciona una opción"
+
             Label:
                 text:'NOX_LVTE'
                 font_size: 40
@@ -83,6 +86,8 @@
             size_hint_x: .15
             Button:
                 text: 'Calculo Volumen/Aire'
+                tooltip_text: "Selecciona una opción"
+
             Button:
                 text: 'Eficencia'
             Button:
@@ -103,7 +108,7 @@
             Label:
                 text:'Fecha:'
             Label:
-                id:fecha
+                id: fecha
             Label:
                 text:'Hora:'
             Label:
@@ -586,3 +591,69 @@
                 text: 'Cerrar'
                 on_press: root.dismiss()
                 size_hint_y: .1
+
+<Gases>:
+    title: "Gases"
+    size_hint: 1,1
+    auto_dismiss: False
+    BoxLayout:
+        orientation:'vertical'
+        size_hint: 1,1
+        GridLayout:
+            cols: 2
+            rows: 1
+            size_hint_x: 1
+            size_hint_y: .95
+            GridLayout:
+                cols: 3
+                size_hint_x: .3
+                rows: 6
+                Label:
+                    text: 'V°'
+                Label:
+                    id: GAS_VTANC
+                    text:'0.0'
+                Label:
+                    text:'m3/kg'
+                Label:
+                    text: 'Vr°2'
+                Label:
+                    id: GAS_VGT
+                    text:'0.0'
+                Label:
+                    text:'m3/kg'
+                Label:
+                    text: 'Vn°2'
+                Label:
+                    id: GAS_VNT
+                    text:'0.0'
+                Label:
+                    text:'m3/kg'
+                Label:
+                    text: 'V°h2'
+                Label:
+                    id: GAS_VTVA
+                    text:'0.0'
+                Label:
+                    text:'m3/kg'
+                Label:
+                    text: 'Vg°'
+                Label:
+                    id: GAS_VTGPC
+                    text:'0.0'
+                Label:
+                    text:'m3/kg'
+
+            GridLayout:
+                cols: 2
+                rows: 6
+        GridLayout:
+            cols:2
+            rows:1
+            size_hint_y: .05
+            Button:
+                text:"Guardar Cambios"
+                on_release: root.guardar()
+            Button:
+                text:"Salir"
+                on_release: root.dismiss()
