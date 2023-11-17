@@ -48,28 +48,16 @@
             rows: 3
             cols: 3
             size_hint_x: .85
-            GridLayout:
-                cols:2
-                rows: 2
-                padding: 40, 0, 0, 0
-                Image:
-                    source: 'img/utelvte.png'
-                Label:
-                    text: ' '
-                    tooltip_text:"Selecciona una opción"
-
+        
+            Image:
+                source: 'img/utelvte.png'
+            
             Label:
                 text:'NOX_LVTE'
                 font_size: 40
                 color: 0 , 0 , 0 , 1
-            GridLayout:
-                cols:2
-                rows: 2
-                padding: 0, 0, 30, 0
-                Label:
-                    text:' '
-                Image:
-                    source: 'img/faci.png'
+            Image:
+                source: 'img/faci.png'
             Label:
                 size_hint_y: .7
                 text:' '
@@ -184,7 +172,7 @@
                 height: self.minimum_height
                 width: self.minimum_width
                 cols:4
-                row_default_height: 30
+                row_default_height: 50
                 Label:
                     text:'Temperaturas precalentador de aire °C'
                 Label:
@@ -646,7 +634,54 @@
 
             GridLayout:
                 cols: 2
-                rows: 6
+                rows:9
+                Label:
+                    text:"Masa de los productos de Combustión"
+                Label:
+                    id: GAS2_MPC
+                    text: "0.0"
+                Label:
+                    text:"Volumen real de los gases de producto de los gases producto de la combustión"
+                Label:
+                    id: GAS2_VRGPGPC
+                    text: "0.0"
+                Label:
+                    text:"Volumen real del vapor de agua"
+                Label:
+                    id: GAS2_VRPA
+                    text: "0.0"
+                Label:
+                    text:"Volumen de gases de reciculación de gases"
+                Label:
+                    id: GAS2_VGRG
+                    text: "0.0"
+                Label:
+                    text:"Volumen total de gases producto de la combustión"
+                Label:
+                    id: GAS2_VTGPC
+                    text: "0.0"
+                
+                Label:
+                    text:"Fracción de volumen de gases triatómicos"
+                Label:
+                    id: GAS2_FVGT
+                    text: "0.0"    
+                Label:
+                    text:"Fracción de volumen de vapor de agua"
+                Label:
+                    id: GAS2_FVVA
+                    text: "0.0"
+                Label:
+                    text:"Fracción de volumen total"
+                Label:
+                    id: GAS2_FVT
+                    text: "0.0"
+                Label:
+                    text:"Volumen de gases secos"
+                Label:
+                    id: GAS2_VGS
+                    text: "0.0"
+                    
         GridLayout:
             cols:2
             rows:1

@@ -29,6 +29,7 @@ class Gases(Popup):
                             "CODIGO like 'CQE_0%' ORDER BY CODIGO ASC")
         cqe = db.info("CQE", "ELEMENTO, PORCENTAJE",
                       "CODIGO like 'CQEC_0%' ORDER BY CODIGO ASC")
+        gdv = db.info("GdV", "VALOR")
 
         carbono = elementos[0][1]
         hidrogeno = elementos[1][1]
@@ -45,6 +46,8 @@ class Gases(Popup):
         temperatura_fuente_oil = cqe[4][1]
         calor_especifico_fuente_oil = cqe[5][1]
 
+        coeficiente_exceso_horno = gdv[3][0]
+
         GAS_VTANC = (0.0889 * (carbono + (0.375 * azufre))) + \
             (0.265 * hidrogeno) - (0.0333 * oxigeno)
         self.ids.GAS_VTANC.text = str(Gases.redondear(GAS_VTANC))
@@ -60,5 +63,23 @@ class Gases(Popup):
         GAS_VTGPC = round(GAS_VGT + GAS_VNT + GAS_VTVA, 9)
         self.ids.GAS_VTGPC.text = str(GAS_VTGPC)
 
+        GAS2_MPC = (1)-(cenizas/100)+((1.306*coeficiente_exceso_horno)*(GAS_VTANC))
+        self.ids.GAS2_MPC.text= str(GAS2_MPC)
+        GAS2_VRPA = GAS_VTVA + (0.0161*(coeficiente_exceso_horno-1)*GAS_VTANC)
+        self.ids.GAS2_VRPA.text = str(GAS2_VRPA)
+        GAS2_VRGPGPC = (GAS_VGT + GAS_VNT + GAS2_VRPA) + ((coeficiente_exceso_horno -1 ) * GAS_VTANC )
+        self.ids.GAS2_VRGPGPC.text = str(GAS2_VRGPGPC)
+        GAS2_VGRG = GAS2_VRGPGPC * 0.2
+        self.ids.GAS2_VGRG.text = str(GAS2_VGRG)
+        GAS2_VTGPC = GAS2_VRGPGPC + GAS2_VGRG
+        self.ids.GAS2_VTGPC.text = str(GAS2_VTGPC)
+        GAS2_FVGT = GAS_VGT / GAS2_VTGPC
+        self.ids.GAS2_FVGT.text = str(GAS2_FVGT)
+        GAS2_FVVA = GAS2_VRPA / GAS2_VTGPC
+        self.ids.GAS2_FVVA.text = str(GAS2_FVVA)
+        GAS2_FVT = GAS2_FVGT + GAS2_FVVA
+        self.ids.GAS2_FVT.text = str(GAS2_FVT)
+        GAS2_VGS = GAS_VGT + GAS_VNT + ((coeficiente_exceso_horno-1)*GAS_VTANC)
+        self.ids.GAS2_VGS.text = str(GAS2_VGS)
     def guardar():
         print("Guardando datos")
